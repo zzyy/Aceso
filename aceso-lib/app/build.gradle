@@ -26,6 +26,4 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-project.archivesBaseName = 'aceso-android-lib'
 
-apply from: 'bintray.gradle'

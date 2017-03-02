@@ -208,6 +208,9 @@ public class IncrementalVisitor extends ClassVisitor {
     }
 
 
+    /**
+     * 使用ASM对class处理
+     */
     public static boolean instrumentClass(
             ZipEntry entry,
             ZipFile zipFile,

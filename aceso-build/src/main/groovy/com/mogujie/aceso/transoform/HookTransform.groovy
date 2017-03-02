@@ -42,6 +42,7 @@ public abstract class HookTransform extends Transform {
 
     def variant
 
+    // 原先的transform, 通过反射给hook掉, 最后会掉
     Transform transform
 
     ClassProcessor processor

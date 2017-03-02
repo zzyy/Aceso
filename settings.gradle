@@ -1,0 +1,3 @@
+include ':aceso-build'
+include ':demo'
+include ':aceso-lib:app'

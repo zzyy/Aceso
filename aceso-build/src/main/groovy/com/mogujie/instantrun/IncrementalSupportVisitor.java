@@ -75,6 +75,7 @@ public class IncrementalSupportVisitor extends IncrementalVisitor {
         visitedClassName = name;
         visitedSuperName = superName;
 
+        // 生成class对应的index
         AcesoProguardMap.instance().putClass(visitedClassName);
         access = IncrementalTool.transformClassAccessForInstantRun(access);
         super.visit(version, access, name, signature, superName, interfaces);
@@ -112,6 +113,7 @@ public class IncrementalSupportVisitor extends IncrementalVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature,
                                      String[] exceptions) {
+        // 生成method对应的index
         AcesoProguardMap.instance().putMethod(visitedClassName, IncrementalTool.getMtdSig(name, desc));
         access = IncrementalTool.transformAccessForInstantRun(access);
 

@@ -62,6 +62,7 @@ public class HostClassProcessor extends ClassProcessor {
             Log.w("proguard is closed, so we will generate all-classes jar in dex task.")
             FileUtils.copy(project, getMergedJar(), allClassesDir,ALL_CLASSES_JAR)
         }
+        Log.w("开始处理class文件")
         HookWrapper.instrument(project, getMergedJar(), getOutJar(), null,
                 getFileInAceso(ACESO_MAPPING_DIR, varDirName, ACESO_MAPPING), config.acesoMapping)
     }

@@ -29,6 +29,11 @@ import java.util.Map;
 /**
  * The aceso's proguard map.
  *
+ * class 和 method 对应的 index
+ *
+ * host项目生成 index
+ * fix项目 从 mapping文件中读取index
+ *
  * @author wangzhi
  */
 public class AcesoProguardMap {

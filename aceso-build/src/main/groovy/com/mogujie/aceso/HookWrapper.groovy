@@ -77,6 +77,7 @@ public class HookWrapper {
     public static void instrument(Project project, File inJar, File outJar,
                                   ArrayList<File> classPath, File mappingFile,
                                   String acesoMapping) {
+        Log.w("instrument: project=${project}, inJar=${inJar}, outJar=${outJar}, classPath=${classPath}, mappingFile=${mappingFile}, acesoMapping=${acesoMapping}")
         AcesoProguardMap.instance().reset()
         if (FileUtils.checkFile(acesoMapping)) {
             Log.i("apply instant mapping: " + acesoMapping)
@@ -137,6 +138,7 @@ public class HookWrapper {
             Thread.currentThread().setContextClassLoader(classesToInstrumentLoader);
             ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(outJar))
             ArrayList<String> fixClassList = new ArrayList()
+            //对每个class文件进行处理
             zipFile.entries().each { entry ->
                 if (entry.name.endsWith(".class")) {
                     if (isHotfix) {
@@ -163,6 +165,9 @@ public class HookWrapper {
         }
     }
 
+    /**
+     * 对class文件的字节码进行修改
+     */
     private static void instrumentOneEntry(ZipOutputStream zos, ZipFile zipFile, ZipEntry entry) {
         if (inBlackList(entry.name)) {
             putEntry(zos, zipFile, entry)

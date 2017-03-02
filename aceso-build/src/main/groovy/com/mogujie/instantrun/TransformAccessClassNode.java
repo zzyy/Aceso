@@ -26,6 +26,8 @@ import org.objectweb.asm.tree.ClassNode;
 /**
  * A ClassNode used for expanding the method and field's scope
  *
+ * 修改method 和 field 的访问权限的, 改成public
+ *
  * @author wangzhi
  */
 public class TransformAccessClassNode extends ClassNode {

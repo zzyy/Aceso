@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url uri('../repo')
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.0.0'
+        classpath 'com.zy.plugin:aceso-build:1.0.0'
+    }
+}
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'AcesoHost'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+
+    defaultConfig {
+        applicationId "com.eebbk.bfc.demo.hotfix"
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+
+    compile project(':aceso-lib:app')
+}
+
+Aceso {
+    instrumentDebug = true
+    logLevel = 3
+}
